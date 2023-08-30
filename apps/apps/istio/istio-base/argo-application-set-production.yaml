@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: istio-production
+  name: istio-base-production
   namespace: argocd
 spec:
   generators:
@@ -21,13 +21,13 @@ spec:
               pathParamPrefix: app
   template:
     metadata:
-      name: 'istio-{{values.suffix}}'
+      name: 'istio-base-{{values.suffix}}'
     spec:
       project: "istio"
       source:
         repoURL: https://github.com/templarfelix/argocd-demo.git
         targetRevision: HEAD
-        path: apps/apps/istio/data/default
+        path: apps/apps/istio/istio-base/data/default
       destination:
         name: '{{server}}'
         namespace: istio-system
