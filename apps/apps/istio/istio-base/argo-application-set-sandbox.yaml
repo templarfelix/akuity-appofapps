@@ -8,13 +8,13 @@ spec:
     - matrix:
         generators:
           - git:
-              repoURL: https://github.com/templarfelix/argocd-demo.git
+              repoURL: git@github.com:templarfelix/akuity-appofapps.git
               revision: HEAD
               files:
               - path: apps/_cluster_config/sandbox/**/**/config.yaml
               pathParamPrefix: target
           - git:
-              repoURL: https://github.com/templarfelix/argocd-demo.git
+              repoURL: git@github.com:templarfelix/akuity-appofapps.git
               revision: HEAD
               files:
               - path: apps/_dataset_config/sandbox/config.yaml
@@ -25,7 +25,7 @@ spec:
     spec:
       project: "istio"
       source:
-        repoURL: https://github.com/templarfelix/argocd-demo.git
+        repoURL: git@github.com:templarfelix/akuity-appofapps.git
         targetRevision: HEAD
         path: apps/apps/istio/istio-base/data/default
       destination:
