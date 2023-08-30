@@ -14,6 +14,8 @@ spec:
     server: '*'
   - namespace: istio-gateways
     server: '*'
+  - namespace: kube-system
+    server: '*'
   clusterResourceWhitelist:
   - group: '*'
     kind: '*'
