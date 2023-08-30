@@ -1,0 +1,8 @@
+- server: dev
+  name: dev
+  values:
+    environment: dev
+    region: us-east1
+    abbreviatedRegion: us-east1
+    suffix: dev-us-east1
+    domain: dev.k8s.templarfelix.com

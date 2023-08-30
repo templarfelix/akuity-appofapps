@@ -1,0 +1,15 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: 'appofapps'
+spec:
+  destination:
+    name: 'in-cluster'
+  source:
+    repoURL: 'https://github.com/templarfelix/akuity-appofapps.git'
+    path: apps
+    targetRevision: HEAD
+  sources: []
+  project: 'default'
+  syncPolicy:
+    automated: {}
