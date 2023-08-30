@@ -6,7 +6,7 @@ spec:
   destination:
     name: 'in-cluster'
   source:
-    repoURL: 'https://github.com/templarfelix/akuity-appofapps.git'
+    repoURL: 'git@github.com:templarfelix/akuity-appofapps.git'
     path: apps
     targetRevision: HEAD
   sources: []
