@@ -30,7 +30,7 @@ spec:
         path: apps/apps/istio/data/default
       destination:
         name: '{{server}}'
-        namespace: istio
+        namespace: istio-system
       syncPolicy:
         automated:
           prune: true
