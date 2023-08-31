@@ -30,7 +30,7 @@ spec:
         path: apps/apps/istio/istio-istiod/data/default
       destination:
         name: '{{server}}'
-        namespace: kube-system
+        namespace: istio-system
       syncPolicy:
         automated:
           prune: true
