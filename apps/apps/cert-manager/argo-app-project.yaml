@@ -12,6 +12,8 @@ spec:
   destinations:
   - namespace: cert-manager
     server: '*'
+  - namespace: kube-system
+    server: '*'
   clusterResourceWhitelist:
   - group: '*'
     kind: '*'
