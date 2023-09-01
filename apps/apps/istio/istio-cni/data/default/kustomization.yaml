@@ -7,5 +7,5 @@ helmCharts:
   releaseName: istio-cni
   version: 1.18.2
   repo: https://istio-release.storage.googleapis.com/charts
-  valuesInline:
-    defaultRevision: 1.18.2
+    cni: 
+      privileged: true
