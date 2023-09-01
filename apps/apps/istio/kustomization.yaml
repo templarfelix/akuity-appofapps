@@ -3,5 +3,6 @@ kind: Kustomization
 resources:
 - argo-app-project.yaml
 - istio-base
-- istio-cni
 - istio-istiod
+- istio-cni
+- istio-ingressgateway

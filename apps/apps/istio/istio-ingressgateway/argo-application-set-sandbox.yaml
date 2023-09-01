@@ -1,0 +1,41 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: istio-ingressgateway-sandbox
+  namespace: argocd
+spec:
+  generators:
+    - matrix:
+        generators:
+          - git:
+              repoURL: git@github.com:templarfelix/akuity-appofapps.git
+              revision: HEAD
+              files:
+              - path: apps/_cluster_config/sandbox/**/**/config.yaml
+              pathParamPrefix: target
+          - git:
+              repoURL: git@github.com:templarfelix/akuity-appofapps.git
+              revision: HEAD
+              files:
+              - path: apps/_dataset_config/sandbox/config.yaml
+              pathParamPrefix: app
+  template:
+    metadata:
+      name: 'istio-ingressgateway-{{values.suffix}}'
+    spec:
+      project: "istio"
+      source:
+        repoURL: git@github.com:templarfelix/akuity-appofapps.git
+        targetRevision: HEAD
+        path: apps/apps/istio/istio-ingressgateway/data/default
+      destination:
+        name: '{{server}}'
+        namespace: istio-ingressgateway
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+          allowEmpty: false
+        syncOptions:
+        - CreateNamespace=true
+        - PrunePropagationPolicy=foreground
