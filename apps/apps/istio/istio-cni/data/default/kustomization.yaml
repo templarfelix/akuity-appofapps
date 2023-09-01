@@ -9,4 +9,5 @@ helmCharts:
   repo: https://istio-release.storage.googleapis.com/charts
   valuesInline:
     cni: 
+      chained: false
       privileged: true
