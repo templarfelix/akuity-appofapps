@@ -2,7 +2,7 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 helmCharts:
 - name: gateway
-  namespace: istio-ingress
+  namespace: istio-gateways
   includeCRDs: true
   releaseName: istio-ingressgateway
   version: 1.18.2

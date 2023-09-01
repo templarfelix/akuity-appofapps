@@ -30,7 +30,7 @@ spec:
         path: apps/apps/istio/istio-ingressgateway/data/default
       destination:
         name: '{{server}}'
-        namespace: istio-ingressgateway
+        namespace: istio-gateways
       syncPolicy:
         automated:
           prune: true
