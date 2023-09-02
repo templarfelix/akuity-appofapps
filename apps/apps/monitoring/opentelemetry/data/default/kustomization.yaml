@@ -1,0 +1,66 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+helmCharts:
+- name: opentelemetry-collector
+  namespace: monitoring
+  includeCRDs: true
+  releaseName: opentelemetry-collector
+  version: 0.67.0
+  repo: https://open-telemetry.github.io/opentelemetry-helm-charts
+  valuesInline:
+    mode: daemonset
+    config:
+      extensions:
+        basicauth/grafana_cloud_tempo:
+          client_auth:
+            username: "684554"
+            password: "glc_eyJvIjoiOTM3MTI3IiwibiI6Im90ZWwiLCJrIjoienhWMGk3eTI0RVpiWnQ0MTQ5eERLNDdZIiwibSI6eyJyIjoicHJvZC11cy1lYXN0LTAifX0="
+        basicauth/grafana_cloud_prometheus:
+          client_auth:
+            username: "1172750"
+            password: "glc_eyJvIjoiOTM3MTI3IiwibiI6Im90ZWwiLCJrIjoienhWMGk3eTI0RVpiWnQ0MTQ5eERLNDdZIiwibSI6eyJyIjoicHJvZC11cy1lYXN0LTAifX0="
+        basicauth/grafana_cloud_loki:
+          client_auth:
+            username: "685450"
+            password: "glc_eyJvIjoiOTM3MTI3IiwibiI6Im90ZWwiLCJrIjoienhWMGk3eTI0RVpiWnQ0MTQ5eERLNDdZIiwibSI6eyJyIjoicHJvZC11cy1lYXN0LTAifX0="
+
+      receivers:
+        otlp:
+          protocols:
+            grpc:
+            http:
+
+      processors:
+        batch:
+
+      exporters:
+        otlp/grafana_cloud_traces:
+          endpoint: "tempo-prod-04-prod-us-east-0.grafana.net:443"
+          auth:
+            authenticator: basicauth/grafana_cloud_tempo
+
+        loki/grafana_cloud_logs:
+          endpoint: "https://logs-prod-006.grafana.net/loki/api/v1/push"
+          auth:
+            authenticator: basicauth/grafana_cloud_loki
+
+        prometheusremotewrite/grafana_cloud_metrics:
+          endpoint: "https://prometheus-prod-13-prod-us-east-0.grafana.net/api/prom/push"
+          auth:
+            authenticator: basicauth/grafana_cloud_prometheus
+
+      service:
+        extensions: [basicauth/grafana_cloud_tempo, basicauth/grafana_cloud_prometheus, basicauth/grafana_cloud_loki]
+        pipelines:
+          traces:
+            receivers: [otlp]
+            processors: [batch]
+            exporters: [otlp/grafana_cloud_traces]
+          metrics:
+            receivers: [otlp]
+            processors: [batch]
+            exporters: [prometheusremotewrite/grafana_cloud_metrics]
+          logs:
+            receivers: [otlp]
+            processors: [batch]
+            exporters: [loki/grafana_cloud_logs]
