@@ -8,7 +8,26 @@ helmCharts:
   version: 0.67.0
   repo: https://open-telemetry.github.io/opentelemetry-helm-charts
   valuesInline:
-    mode: deployment
+    mode: daemonset
+    livenessProbe:
+      initialDelaySeconds: 10
+      periodSeconds: 5
+      timeoutSeconds: 3
+      failureThreshold: 2
+      terminationGracePeriodSeconds: 40
+      httpGet:
+        port: 8989
+        path: /healthz
+
+    readinessProbe:
+      initialDelaySeconds: 10
+      periodSeconds: 5
+      timeoutSeconds: 3
+      successThreshold: 2
+      failureThreshold: 2
+      httpGet:
+        port: 8989
+        path: /healthz
     config:
       extensions:
         basicauth/grafana_cloud_tempo:
