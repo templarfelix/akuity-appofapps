@@ -53,7 +53,12 @@ helmCharts:
             authenticator: basicauth/grafana_cloud_prometheus
 
       service:
-        extensions: [basicauth/grafana_cloud_tempo, basicauth/grafana_cloud_prometheus, basicauth/grafana_cloud_loki]
+        extensions:
+          - basicauth/grafana_cloud_tempo 
+          - basicauth/grafana_cloud_prometheus
+          - basicauth/grafana_cloud_loki
+          - health_check
+          - memory_ballast
         pipelines:
           traces:
             receivers: [otlp]
