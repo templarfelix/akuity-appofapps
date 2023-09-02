@@ -9,27 +9,10 @@ helmCharts:
   repo: https://open-telemetry.github.io/opentelemetry-helm-charts
   valuesInline:
     mode: daemonset
-    livenessProbe:
-      initialDelaySeconds: 10
-      periodSeconds: 5
-      timeoutSeconds: 3
-      failureThreshold: 2
-      terminationGracePeriodSeconds: 40
-      httpGet:
-        port: 8989
-        path: /healthz
-
-    readinessProbe:
-      initialDelaySeconds: 10
-      periodSeconds: 5
-      timeoutSeconds: 3
-      successThreshold: 2
-      failureThreshold: 2
-      httpGet:
-        port: 8989
-        path: /healthz
     config:
       extensions:
+        health_check: {}
+        memory_ballast: {}
         basicauth/grafana_cloud_tempo:
           client_auth:
             username: "684554"
@@ -51,6 +34,7 @@ helmCharts:
 
       processors:
         batch:
+        memory_limiter: null
 
       exporters:
         otlp/grafana_cloud_traces:
