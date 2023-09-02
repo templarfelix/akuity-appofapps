@@ -8,7 +8,7 @@ helmCharts:
   version: 0.67.0
   repo: https://open-telemetry.github.io/opentelemetry-helm-charts
   valuesInline:
-    mode: daemonset
+    mode: deployment
     config:
       extensions:
         basicauth/grafana_cloud_tempo:
