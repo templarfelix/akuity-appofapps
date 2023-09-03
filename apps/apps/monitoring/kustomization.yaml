@@ -4,4 +4,3 @@ resources:
 - argo-app-project.yaml
 - k8s-monitoring
 - opentelemetry
-- podinfo
