@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: microservices
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  description: Microservices Project
+  sourceRepos:
+  - '*'
+  destinations:
+  - namespace: microservices
+    server: '*'
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: '*'
+  orphanedResources:
+    warn: true
