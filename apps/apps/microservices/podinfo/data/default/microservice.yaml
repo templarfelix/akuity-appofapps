@@ -9,6 +9,8 @@ spec:
   env:
     - name: OTEL_EXPORTER_OTLP_TRACES_ENDPOINT
       value: 'http://opentelemetry-collector.monitoring.svc.cluster.local:4317'
+    - name: PODINFO_OTEL_SERVICE_NAME
+      value: 'podinfo'
   envFrom: {}
   environment: sandbox
   health:
