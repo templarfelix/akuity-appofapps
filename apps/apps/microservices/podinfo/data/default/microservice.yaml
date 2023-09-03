@@ -16,8 +16,8 @@ spec:
     readinessInitialDelay: 60
   image:
     imagePullPolicy: Always
-    registry: docker.io
-    repository: ghcr.io/stefanprodan/podinfo
+    registry: ghcr.io
+    repository: stefanprodan/podinfo
     tag: 6.4.1
   istio:
     virtualService:
