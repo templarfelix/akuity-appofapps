@@ -11,8 +11,9 @@ helmCharts:
   repo: https://istio-release.storage.googleapis.com/charts
   # https://artifacthub.io/packages/helm/istio-official/istiod?modal=values
   valuesInline:
-    istio_cni: 
-      enabled: true
+    ## FIXME TEST CNI
+    #istio_cni: 
+    #  enabled: true
     meshConfig:
       enableTracing: true
       accessLogFile: /dev/stdout
