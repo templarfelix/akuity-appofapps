@@ -32,6 +32,8 @@ helmCharts:
           protocols:
             grpc:
             http:
+        opencensus:
+          endpoint: 0.0.0.0:55678
 
       processors:
         batch:
