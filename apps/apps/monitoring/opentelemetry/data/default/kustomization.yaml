@@ -9,7 +9,8 @@ helmCharts:
   repo: https://open-telemetry.github.io/opentelemetry-helm-charts
   # https://github.com/open-telemetry/opentelemetry-helm-charts/blob/main/charts/opentelemetry-collector/values.yaml
   valuesInline:
-    mode: daemonset
+    mode: deployment
+    replicas: 1
     config:
       extensions:
         health_check: {}

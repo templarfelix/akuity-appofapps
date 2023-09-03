@@ -6,7 +6,9 @@ metadata:
 spec:
   # Default values copied from <project_dir>/helm-charts/rollout/values.yaml
   domain: podinfo.k8s.templarfelix.com
-  env: {}
+  env:
+    - name: OTEL_EXPORTER_OTLP_TRACES_ENDPOINT
+      value: 'http://opentelemetry-collector.opentelemetry.svc.cluster.local:4317'
   envFrom: {}
   environment: sandbox
   health:
