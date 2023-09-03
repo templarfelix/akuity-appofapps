@@ -7,6 +7,7 @@ helmCharts:
   releaseName: k8s-monitoring
   version: 0.1.15
   repo: https://grafana.github.io/helm-charts
+  # https://github.com/grafana/k8s-monitoring-helm/blob/main/charts/k8s-monitoring/values.yaml
   valuesInline:
     cluster:
       name: "dev"
@@ -31,3 +32,20 @@ helmCharts:
         prometheus:
           external:
             url: "https://prometheus-prod-13-prod-us-east-0.grafana.net/api/prom"
+
+  extraConfig: |=
+    discovery.relabel "cert_manager" {
+      targets = discovery.kubernetes.services.targets
+      rule {
+        source_labels = ["__meta_kubernetes_service_label_app_kubernetes_io_name"]
+        regex = "cert-manager"
+        action = "keep"
+      }
+    }
+
+    prometheus.scrape "cert_manager" {
+      job_name     = "integrations/cert-manager"
+      targets      = discovery.relabel.cert_manager.output
+      honor_labels = true
+      forward_to   = [prometheus.remote_write.grafana_cloud_prometheus.receiver]
+    }
