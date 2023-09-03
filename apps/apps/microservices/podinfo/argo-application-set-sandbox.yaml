@@ -41,10 +41,7 @@ spec:
             any: label
             you: like
           annotations: # The annotations to set on the application namespace
-            the: same
-            applies: for
-            annotations: 
-              istio-injection: enabled
+            istio-injection: enabled
         syncOptions:
         - CreateNamespace=true
         - PrunePropagationPolicy=foreground
