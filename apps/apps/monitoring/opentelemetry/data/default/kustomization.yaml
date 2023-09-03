@@ -40,6 +40,8 @@ helmCharts:
         memory_limiter: null
 
       exporters:
+        logging: {}
+
         otlp/grafana_cloud_traces:
           endpoint: "tempo-prod-04-prod-us-east-0.grafana.net:443"
           auth:
@@ -66,12 +68,12 @@ helmCharts:
           traces:
             receivers: [otlp]
             processors: [batch]
-            exporters: [otlp/grafana_cloud_traces]
+            exporters: [otlp/grafana_cloud_traces, logging]
           metrics:
             receivers: [otlp]
             processors: [batch]
-            exporters: [prometheusremotewrite/grafana_cloud_metrics]
+            exporters: [prometheusremotewrite/grafana_cloud_metrics, logging]
           logs:
             receivers: [otlp]
             processors: [batch]
-            exporters: [loki/grafana_cloud_logs]
+            exporters: [loki/grafana_cloud_logs, logging]
