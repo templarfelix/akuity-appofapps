@@ -36,6 +36,15 @@ spec:
           prune: true
           selfHeal: true
           allowEmpty: false
+        managedNamespaceMetadata:
+          labels: # The labels to set on the application namespace
+            any: label
+            you: like
+          annotations: # The annotations to set on the application namespace
+            the: same
+            applies: for
+            annotations: 
+              istio-injection: enabled
         syncOptions:
         - CreateNamespace=true
         - PrunePropagationPolicy=foreground
