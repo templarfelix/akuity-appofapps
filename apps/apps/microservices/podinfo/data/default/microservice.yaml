@@ -5,7 +5,7 @@ metadata:
   namespace: microservices
 spec:
   # Default values copied from <project_dir>/helm-charts/rollout/values.yaml
-  domain: templarfelix.com
+  domain: podinfo.k8s.templarfelix.com
   env: {}
   envFrom: {}
   environment: sandbox
