@@ -30,7 +30,7 @@ spec:
         path: apps/apps/microservices/operator/data/default
       destination:
         name: '{{server}}'
-        namespace: microservices
+        namespace: operator-system
       syncPolicy:
         automated:
           prune: true

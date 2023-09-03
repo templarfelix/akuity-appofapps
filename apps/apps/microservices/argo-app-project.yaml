@@ -10,7 +10,9 @@ spec:
   sourceRepos:
   - '*'
   destinations:
-  - namespace: microservices
+  - namespace: operator-system
+    server: '*'
+  - namespace: mircoservices
     server: '*'
   clusterResourceWhitelist:
   - group: '*'
