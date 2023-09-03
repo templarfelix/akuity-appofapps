@@ -7,3 +7,18 @@ helmCharts:
   releaseName: istio-istiod
   version: 1.18.2
   repo: https://istio-release.storage.googleapis.com/charts
+  # https://artifacthub.io/packages/helm/istio-official/istiod?modal=values
+  valuesInline:
+    istio_cni: 
+      enabled: true
+    meshConfig:
+      accessLogFile: /dev/stdout
+      extensionProviders:
+      - name: otel
+        envoyOtelAls:
+          service: opentelemetry-collector.opentelemetry.svc.cluster.local
+          port: 4317
+      defaultProviders:
+        accessLogging:
+        - envoy
+        - otel

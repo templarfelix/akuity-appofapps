@@ -7,5 +7,6 @@ helmCharts:
   releaseName: istio-base
   version: 1.18.2
   repo: https://istio-release.storage.googleapis.com/charts
+  # https://artifacthub.io/packages/helm/istio-official/base?modal=values
   valuesInline:
     defaultRevision: 1.18.2
