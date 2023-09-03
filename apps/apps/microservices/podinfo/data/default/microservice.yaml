@@ -12,7 +12,7 @@ spec:
   health:
     enabled: true
     livenessInitialDelay: 30
-    path: /q/health/live
+    path: /healthz
     readinessInitialDelay: 60
   image:
     imagePullPolicy: Always
