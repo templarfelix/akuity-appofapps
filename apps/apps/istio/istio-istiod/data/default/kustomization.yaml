@@ -16,7 +16,7 @@ helmCharts:
       extensionProviders:
       - name: otel
         envoyOtelAls:
-          service: opentelemetry-collector.opentelemetry.svc.cluster.local
+          service: opentelemetry-collector.monitoring.svc.cluster.local
           port: 4317
       defaultProviders:
         accessLogging:
