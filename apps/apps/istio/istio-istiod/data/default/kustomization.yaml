@@ -19,12 +19,12 @@ helmCharts:
         envoyOtelAls:
           service: opentelemetry-collector.monitoring.svc.cluster.local
           port: 4317
-        - name: "opencensus"
-          opencensus:
-              service: "opentelemetry-collector.monitoring.svc.cluster.local"
-              port: 55678
-              context:
-              - W3C_TRACE_CONTEXT
+      - name: "opencensus"
+        opencensus:
+            service: "opentelemetry-collector.monitoring.svc.cluster.local"
+            port: 55678
+            context:
+            - W3C_TRACE_CONTEXT
       defaultProviders:
         tracing:
         - "opencensus"
