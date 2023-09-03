@@ -12,7 +12,7 @@ spec:
   destinations:
   - namespace: operator-system
     server: '*'
-  - namespace: mircoservices
+  - namespace: microservices
     server: '*'
   clusterResourceWhitelist:
   - group: '*'
