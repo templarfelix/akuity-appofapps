@@ -10,7 +10,7 @@ helmCharts:
   # https://github.com/open-telemetry/opentelemetry-helm-charts/blob/main/charts/opentelemetry-collector/values.yaml
   valuesInline:
     mode: deployment
-    podMonitor:
+    serviceMonitor:
       enabled: true
     ports:
       otlp:
