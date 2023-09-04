@@ -9,11 +9,16 @@ helmCharts:
   repo: https://kubernetes-sigs.github.io/external-dns/
   # https://github.com/kubernetes-sigs/external-dns/blob/master/charts/external-dns/values.yaml
   valuesInline:
+    sources:
+      - service
+      - ingress
+      - istio-gateway
+      - istio-virtualservice
     provider: cloudflare
     domainFilters:
       - templarfelix.com
     env:
-    - name: CF_API_KEY
-      value: "5afaacd8aae71ce9d9c02924ce2b2cc6e3dca"
-    - name: CF_API_EMAIL
-      value: "felix.templar@gmail.com"
+      - name: CF_API_KEY
+        value: "5afaacd8aae71ce9d9c02924ce2b2cc6e3dca"
+      - name: CF_API_EMAIL
+        value: "felix.templar@gmail.com"
