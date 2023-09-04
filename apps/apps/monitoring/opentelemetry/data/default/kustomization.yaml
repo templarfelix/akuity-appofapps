@@ -10,6 +10,34 @@ helmCharts:
   # https://github.com/open-telemetry/opentelemetry-helm-charts/blob/main/charts/opentelemetry-collector/values.yaml
   valuesInline:
     mode: deployment
+    podMonitor:
+      enabled: true
+    ports:
+      otlp:
+        enabled: true
+        containerPort: 4317
+        servicePort: 4317
+        hostPort: 4317
+        protocol: TCP
+        appProtocol: grpc
+      otlp-http:
+        enabled: true
+        containerPort: 4318
+        servicePort: 4318
+        hostPort: 4318
+        protocol: TCP
+      opencensus:
+        enabled: true
+        containerPort: 55678
+        servicePort: 55678
+        hostPort: 55678
+        protocol: TCP
+      metrics:
+        enabled: true
+        containerPort: 8888
+        servicePort: 8888
+        protocol: TCP
+
     config:
       extensions:
         health_check: {}
