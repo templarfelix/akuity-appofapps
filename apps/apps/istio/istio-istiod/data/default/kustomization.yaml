@@ -20,4 +20,4 @@ helmCharts:
         tracing:
           sampling: 100.0
           openCensusAgent:
-            address: dns:opentelemetry-collector.opentelemetry.svc.cluster.local:55678
+            address: dns:opentelemetry-collector.monitoring.svc.cluster.local:55678
