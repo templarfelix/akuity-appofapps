@@ -3,7 +3,7 @@ apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
 metadata:
   name: letsencrypt-prod-cluster
-  namespace: istio-system
+  namespace: microservices
 spec:
   acme:
     email: ops@deanpetrusek.cloud
@@ -19,7 +19,7 @@ apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
 metadata:
   name: letsencrypt-staging-cluster
-  namespace: istio-system
+  namespace: microservices
 spec:
   acme:
     email: ops@deanpetrusek.cloud
