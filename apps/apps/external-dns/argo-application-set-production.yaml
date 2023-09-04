@@ -1,0 +1,41 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: external-dns-production
+  namespace: argocd
+spec:
+  generators:
+    - matrix:
+        generators:
+          - git:
+              repoURL: git@github.com:templarfelix/akuity-appofapps.git
+              revision: HEAD
+              files:
+              - path: apps/_cluster_config/production/**/**/config.yaml
+              pathParamPrefix: target
+          - git:
+              repoURL: git@github.com:templarfelix/akuity-appofapps.git
+              revision: HEAD
+              files:
+              - path: apps/_dataset_config/production/config.yaml
+              pathParamPrefix: app
+  template:
+    metadata:
+      name: 'external-dns-{{values.suffix}}'
+    spec:
+      project: "external-dns"
+      source:
+        repoURL: git@github.com:templarfelix/akuity-appofapps.git
+        targetRevision: HEAD
+        path: apps/apps/external-dns/data/default
+      destination:
+        name: '{{server}}'
+        namespace: external-dns
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+          allowEmpty: false
+        syncOptions:
+        - CreateNamespace=true
+        - PrunePropagationPolicy=foreground

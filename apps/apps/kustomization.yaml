@@ -4,5 +4,6 @@ resources:
 - argo-rollouts
 - istio
 - cert-manager
+- external-dns
 - monitoring
 - microservices
