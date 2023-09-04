@@ -1,0 +1,47 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: istio-monitor
+  namespace: monitoring
+spec:
+  selector:
+    matchExpressions:
+    - key: istio
+      operator: in
+      values:
+      - mixer
+      - pilot
+      - galley
+      - citadel
+      - sidecar-injector
+  namespaceSelector:
+    matchNames:
+    - istio-system
+    - istio-gateways
+  endpoints:
+  - interval: 30s
+    honorLabels: true
+    honorTimestamps: false
+    port: http-monitoring
+    metricRelabelings:
+    - action: replace
+      targetLabel: job
+      replacement: integrations/kubernetes/istio
+    - action: labeldrop
+      regex: cluster
+    relabelings:
+    - replacement: integrations/kubernetes/istio
+      targetLabel: job
+  - interval: 30s
+    honorLabels: true
+    honorTimestamps: false
+    port: http-policy-monitoring  
+    relabelings:
+    - replacement: integrations/kubernetes/job
+      targetLabel: job
+    metricRelabelings:
+    - action: replace
+      targetLabel: job
+      replacement: integrations/kubernetes/istio
+    - action: labeldrop
+      regex: cluster
