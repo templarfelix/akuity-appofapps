@@ -1,4 +1,4 @@
-- server: 
+- server: home
   name: home
   values:
     environment: home
