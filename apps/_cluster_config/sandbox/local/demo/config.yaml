@@ -1,0 +1,8 @@
+- server: 
+  name: demo
+  values:
+    environment: demo
+    region: local
+    abbreviatedRegion: local
+    suffix: demo-local
+    domain: dev.k8s.templarfelix.com

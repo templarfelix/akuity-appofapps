@@ -3,4 +3,3 @@ kind: Kustomization
 resources:
 - argo-app-project.yaml
 - argo-application-set-sandbox.yaml
-- argo-application-set-production.yaml
