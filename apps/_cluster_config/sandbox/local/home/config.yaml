@@ -1,0 +1,8 @@
+- server: 
+  name: home
+  values:
+    environment: home
+    region: local
+    abbreviatedRegion: local
+    suffix: home-local
+    domain: dev.k8s.templarfelix.com
