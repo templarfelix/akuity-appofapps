@@ -1,8 +1,0 @@
-apiVersion: kustomize.config.k8s.io/v1beta1
-kind: Kustomization
-resources:
-- argo-app-project.yaml
-- istio-base
-- istio-istiod
-- istio-cni
-- istio-ingressgateway
